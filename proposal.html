@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Marry Me? 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 25%, #f8b500 50%, #ff6b9d 75%, #c44569 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 10px;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        /* Falling rose petals */
+        .petal {
+            position: absolute;
+            background: radial-gradient(ellipse at center, #ff69b4, #ff1493);
+            border-radius: 50% 0 50% 0;
+            width: 12px;
+            height: 12px;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 20px;
+            animation: floatHeart 8s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        @keyframes floatHeart {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg) scale(0.8); 
+                opacity: 0; 
+            }
+            25% { 
+                transform: translateY(-50px) rotate(90deg) scale(1); 
+                opacity: 1; 
+            }
+            50% { 
+                transform: translateY(-100px) rotate(180deg) scale(1.2); 
+                opacity: 1; 
+            }
+            75% { 
+                transform: translateY(-50px) rotate(270deg) scale(1); 
+                opacity: 1; 
+            }
+        }
+        
+        .proposal-container {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.98));
+            border-radius: 30px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.15),
+                0 0 50px rgba(255, 182, 193, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            max-width: 90%;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .proposal-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 182, 193, 0.1), transparent);
+            animation: shimmer 3s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .proposal-container:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 
+                0 40px 100px rgba(0, 0, 0, 0.2),
+                0 0 80px rgba(255, 182, 193, 0.5);
+        }
+        
+        .main-heart {
+            font-size: 60px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: heartPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.5));
+        }
+        
+        @keyframes heartPulse {
+            0%, 100% { 
+                transform: scale(1); 
+                filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.5)); 
+            }
+            50% { 
+                transform: scale(1.15); 
+                filter: drop-shadow(0 0 30px rgba(255, 20, 147, 0.8)); 
+            }
+        }
+        
+        .proposal-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            background: linear-gradient(45deg, #2c3e50, #c44569, #2c3e50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(196, 69, 105, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(196, 69, 105, 0.6)); }
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #34495e;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            font-style: italic;
+            background: linear-gradient(135deg, #34495e, #c44569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            position: relative;
+            min-height: 120px;
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            width: 100%;
+            max-width: 280px;
+            min-height: 50px;
+            touch-action: manipulation;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before, .btn:active::before {
+            left: 100%;
+        }
+        
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52, #c0392b);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            animation: yesGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes yesGlow {
+            0%, 100% { box-shadow: 0 8px 25px rgba(238, 90, 82, 0.3); }
+            50% { box-shadow: 0 12px 35px rgba(238, 90, 82, 0.6); }
+        }
+        
+        .btn-yes:hover, .btn-yes:active {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(238, 90, 82, 0.5);
+        }
+        
+        .btn-no {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d, #34495e);
+            color: white;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-no:hover, .btn-no:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        /* Romantic persuasion modal */
+        .persuasion-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            padding: 20px;
+        }
+        
+        .persuasion-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.98));
+            border-radius: 25px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.2),
+                0 0 50px rgba(255, 182, 193, 0.4);
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            animation: modalAppear 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        
+        @keyframes modalAppear {
+            0% { 
+                transform: scale(0) rotate(180deg); 
+                opacity: 0;
+            }
+            100% { 
+                transform: scale(1) rotate(0deg); 
+                opacity: 1;
+            }
+        }
+        
+        .persuasion-heart {
+            font-size: 50px;
+            margin-bottom: 15px;
+            animation: heartPulse 1.5s ease-in-out infinite;
+        }
+        
+        .persuasion-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 28px;
+            background: linear-gradient(45deg, #c44569, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .persuasion-message {
+            font-size: 16px;
+            color: #34495e;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .persuasion-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            width: 100%;
+            max-width: 250px;
+            min-height: 45px;
+            touch-action: manipulation;
+        }
+        
+        .modal-yes {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            box-shadow: 0 6px 20px rgba(238, 90, 82, 0.3);
+        }
+        
+        .modal-yes:hover, .modal-yes:active {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(238, 90, 82, 0.5);
+        }
+        
+        .modal-no {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+            box-shadow: 0 6px 20px rgba(149, 165, 166, 0.3);
+        }
+        
+        .modal-no:hover, .modal-no:active {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(149, 165, 166, 0.5);
+        }
+        
+        /* Love Envelope styles */
+        .letter-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+        }
+        
+        .love-envelope {
+            width: 100%;
+            max-width: 450px;
+            height: 300px;
+            position: relative;
+            transform: scale(0) rotateY(180deg);
+            animation: envelopeAppear 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+        
+        @keyframes envelopeAppear {
+            0% { 
+                transform: scale(0) rotateY(180deg); 
+                opacity: 0;
+            }
+            100% { 
+                transform: scale(1) rotateY(0deg); 
+                opacity: 1;
+            }
+        }
+        
+        .envelope-back {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8f0e6, #fff8dc);
+            border-radius: 15px;
+            position: absolute;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.4),
+                0 0 50px rgba(255, 182, 193, 0.3);
+            border: 3px solid #d4b896;
+        }
+        
+        .envelope-flap {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #c44569, #ee5a52, #ff6b6b);
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: top;
+            animation: envelopeFlapOpen 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.5s forwards;
+            z-index: 2;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            box-shadow: inset 0 -5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .wax-seal {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, #c44569, #8b0000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: sealBreak 1s ease-out 3.8s forwards;
+            border: 3px solid #a0392b;
+        }
+        
+        @keyframes sealBreak {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.3); }
+            100% { transform: translateX(-50%) scale(0); opacity: 0; }
+        }
+        
+        @keyframes envelopeFlapOpen {
+            0% { transform: rotateX(0deg); }
+            100% { transform: rotateX(180deg); }
+        }
+        
+        .love-letter {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            background: linear-gradient(135deg, #fff, #faf0e6);
+            border-radius: 10px;
+            padding: 25px 20px;
+            opacity: 0;
+            animation: letterSlideUp 1.5s ease-out 4s forwards;
+            box-shadow: inset 0 0 20px rgba(196, 69, 105, 0.1);
+            border: 1px solid rgba(196, 69, 105, 0.2);
+            overflow-y: auto;
+        }
+        
+        @keyframes letterSlideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .letter-header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(196, 69, 105, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .letter-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
+            color: #c44569;
+            margin-bottom: 8px;
+        }
+        
+        .letter-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .letter-body {
+            font-family: 'Dancing Script', cursive;
+            font-size: 16px;
+            color: #2c3e50;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .letter-signature {
+            text-align: right;
+            font-family: 'Great Vibes', cursive;
+            font-size: 18px;
+            color: #c44569;
+            animation: signatureWrite 2s ease-out 5.5s forwards;
+            opacity: 0;
+            margin-top: 15px;
+        }
+        
+        @keyframes signatureWrite {
+            0% { opacity: 0; transform: translateX(20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(196, 69, 105, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 3;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            touch-action: manipulation;
+        }
+        
+        .close-btn:hover, .close-btn:active {
+            background: rgba(196, 69, 105, 1);
+            transform: scale(1.1);
+        }
+        
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #ffd700, #ffed4e);
+            border-radius: 50%;
+            animation: sparkleAnimation 3s ease-in-out infinite;
+            box-shadow: 0 0 6px #ffd700;
+        }
+        
+        @keyframes sparkleAnimation {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1) rotate(180deg); 
+            }
+        }
+        
+        /* Celebration effects */
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ff69b4;
+            animation: confettiFall 3s linear infinite;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px 10px;
+            }
+            
+            .proposal-container {
+                padding: 30px 20px;
+                border-radius: 25px;
+                max-width: 95%;
+            }
+            
+            .main-heart {
+                font-size: 50px;
+                margin-bottom: 15px;
+            }
+            
+            .proposal-title {
+                font-size: 36px;
+                margin-bottom: 20px;
+                line-height: 1.2;
+            }
+            
+            .subtitle {
+                font-size: 14px;
+                margin-bottom: 25px;
+                line-height: 1.5;
+            }
+            
+            .buttons-container {
+                gap: 15px;
+                margin-top: 25px;
+                min-height: 100px;
+            }
+            
+            .btn {
+                padding: 14px 25px;
+                font-size: 16px;
+                min-height: 48px;
+                max-width: 250px;
+            }
+            
+            .persuasion-modal {
+                padding: 15px;
+            }
+            
+            .persuasion-content {
+                padding: 30px 20px;
+                border-radius: 20px;
+                max-width: 95%;
+            }
+            
+            .persuasion-heart {
+                font-size: 40px;
+                margin-bottom: 12px;
+            }
+            
+            .persuasion-title {
+                font-size: 24px;
+                margin-bottom: 12px;
+                line-height: 1.2;
+            }
+            
+            .persuasion-message {
+                font-size: 14px;
+                margin-bottom: 20px;
+                line-height: 1.4;
+            }
+            
+            .modal-btn {
+                padding: 12px 20px;
+                font-size: 15px;
+                min-height: 44px;
+                max-width: 220px;
+            }
+            
+            .love-envelope {
+                height: 250px;
+                max-width: 95%;
+            }
+            
+            .envelope-flap {
+                height: 125px;
+            }
+            
+            .wax-seal {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                bottom: -12px;
+            }
+            
+            .love-letter {
+                padding: 20px 15px;
+                top: 12px;
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+            }
+            
+            .letter-title {
+                font-size: 20px;
+                margin-bottom: 6px;
+            }
+            
+            .letter-date {
+                font-size: 12px;
+            }
+            
+            .letter-body {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 15px;
+            }
+            
+            .letter-signature {
+                font-size: 16px;
+                margin-top: 12px;
+            }
+            
+            .close-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .heart {
+                font-size: 16px;
+            }
+            
+            .sparkle {
+                width: 3px;
+                height: 3px;
+            }
+            
+            .confetti {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .proposal-container {
+                padding: 25px 15px;
+                max-width: 98%;
+            }
+            
+            .main-heart {
+                font-size: 45px;
+            }
+            
+            .proposal-title {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 13px;
+            }
+            
+            .btn {
+                font-size: 15px;
+                padding: 12px 20px;
+            }
+            
+            .persuasion-title {
+                font-size: 22px;
+            }
+            
+            .persuasion-message {
+                font-size: 13px;
+            }
+            
+            .love-envelope {
+                height: 220px;
+            }
+            
+            .envelope-flap {
+                height: 110px;
+            }
+            
+            .letter-body {
+                font-size: 13px;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:hover::before {
+                left: 0;
+            }
+            
+            .btn:active {
+                transform: scale(0.98);
+            }
+            
+            .modal-btn:active {
+                transform: scale(0.98);
+            }
+            
+            .close-btn:active {
+                transform: scale(0.95);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkles" id="sparkles"></div>
+    
+    <div class="proposal-container" id="proposalContainer">
+        <div class="main-heart">💖</div>
+        <h1 class="proposal-title">Will You Marry Me?</h1>
+        <p class="subtitle">Priti, you are my dream come true, my forever love, the poetry my heart has been writing since the day I met you. I want to wake up every morning knowing you're mine and I'm yours, for all eternity.</p>
+        
+        <div class="buttons-container" id="buttonsContainer">
+            <button class="btn btn-yes" id="yesBtn">Yes! Forever with you! 💕</button>
+            <button class="btn btn-no" id="noBtn">No 😢</button>
+        </div>
+    </div>
+    
+    <div class="persuasion-modal" id="persuasionModal">
+        <div class="persuasion-content">
+            <div class="persuasion-heart" id="persuasionHeart">💔</div>
+            <h2 class="persuasion-title" id="persuasionTitle">Are you sure?</h2>
+            <p class="persuasion-message" id="persuasionMessage">
+                But my heart beats only for you! Please reconsider... 💕
+            </p>
+            <div class="persuasion-buttons">
+                <button class="modal-btn modal-yes" id="modalYes">Yes, I love you too! 💖</button>
+                <button class="modal-btn modal-no" id="modalNo">Still no 😢</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="letter-container" id="letterContainer">
+        <div class="love-envelope">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <div class="envelope-back"></div>
+            <div class="envelope-flap">
+                <div class="wax-seal">💕</div>
+            </div>
+            <div class="love-letter">
+                <div class="letter-header">
+                    <div class="letter-title">Our Love Story Begins</div>
+                    <div class="letter-date">The Day Our Dreams Came True</div>
+                </div>
+                <div class="letter-body">
+                    वाह Ji,
+                    <br><br>
+                    मुझे पता था कि आप हा बोलोगी क्योंकि आप मेरी जान हो और मैं आपका।
+                    <br><br>
+                    हम दोनों एक दूसरे के लिए ही बने हैं मेरी जान। मैं तुमसे बहुत प्यार करता हूँ मेरी प्यारी Baby! 💖
+                    <br><br>
+                    आपके साथ वो हर पल जीना चाहता है जो भी हमने call pr imagine करा और वो हर ख्वाहिश पूरी करना चाहता है जो अब तक बाकी रह गया है।
+                    <br><br>
+                    मैं हर कोसिस करुंगा जिसे आप खुश रहो मेरी जान।
+                    <br><br>
+                    मेरी प्यारी प्यारी सी जान 💞
+                    <br><br>
+                    Welcome to forever, my beautiful Priti! 💖
+                </div>
+                <div class="letter-signature">Your devoted husband-to-be 💍</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="celebration" id="celebration"></div>
+
+    <script>
+        
+        // Create falling rose petals
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            
+            // Random rotation for variety
+            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            document.body.appendChild(petal);
+            
+            setTimeout(() => {
+                petal.remove();
+            }, 8000);
+        }
+        
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            const hearts = ['💕', '💖', '💗', '💘', '💝', '💞'];
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 4 + 's';
+            heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        // Create sparkles
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparkles');
+            const sparkleCount = window.innerWidth < 768 ? 15 : 30; // Fewer sparkles on mobile
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 3 + 's';
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+        
+        // Create confetti
+        function createConfetti() {
+            const celebration = document.getElementById('celebration');
+            const colors = ['#ff69b4', '#ff1493', '#ffd700', '#ff6b6b', '#c44569', '#f8b500'];
+            const confettiCount = window.innerWidth < 768 ? 50 : 100; // Fewer confetti on mobile
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    celebration.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 50);
+            }
+        }
+        
+        // Initialize effects
+        createSparkles();
+        const petalInterval = window.innerWidth < 768 ? 1200 : 800; // Slower on mobile
+        const heartInterval = window.innerWidth < 768 ? 1800 : 1200;
+        setInterval(createPetal, petalInterval);
+        setInterval(createHeart, heartInterval);
+        
+        // Button functionality
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const letterContainer = document.getElementById('letterContainer');
+        const closeBtn = document.getElementById('closeBtn');
+        const persuasionModal = document.getElementById('persuasionModal');
+        const modalYes = document.getElementById('modalYes');
+        const modalNo = document.getElementById('modalNo');
+        const persuasionHeart = document.getElementById('persuasionHeart');
+        const persuasionTitle = document.getElementById('persuasionTitle');
+        const persuasionMessage = document.getElementById('persuasionMessage');
+        
+        let attemptCount = 0;
+        
+        // Romantic persuasion messages
+        const persuasionData = [
+            {
+                heart: "💔",
+                title: "Are you sure, Priti?",
+                message: "पर प्रीति, मेरा दिल तो सिर्फ़ तुम्हारे लिए धड़कता है! ज़रा सोचो, मेरी जान...🥲💕"
+            },
+            {
+                heart: "🥺",
+                title: "Please मेरा दिल मत तोड़ो, प्रीति!",
+                message: "प्रीति, मैं इस पल का हमेशा से सपना देख रहा था। तुम मेरी सब कुछ हो, मेरी हमसफ़र हो, मेरी किस्मत हो! मान जाओ ना💖"
+            },
+            {
+                heart: "😢",
+                title: "हमारी यादों के बारे में सोचो, प्रीति!",
+                message: "प्रीति, क्या तुम हमारी सभी खूबसूरत यादों को याद करती हो? सभी हंसी, सभी सपने जो हमने साझा किए? मैं अपनी ज़िंदगी तुम्हारे बिना नहीं सोच सकता! मान भी जाओ 🌹"
+            },
+            {
+                heart: "🌙",
+                title: "तुम मेरी चाँद हो, प्रीति!",
+                message: "प्रीति, तुम्हारे बिना मेरी रातें अंधेरी हैं और मेरे दिन खाली।🌟 अब तो मान जाओ"
+            },
+            {
+                heart: "💎",
+                title: "तुम मेरी कीमती हीरा हो, प्रीति!",
+                message: "तुम एक हीरा हो जो सिर्फ मेरा है, प्लीज दिल ना तोड़ो मान जाओ मेरी जान 💍"
+            },
+            {
+                heart: "💕",
+                title: "प्रीति, मेरी खूबसूरत प्रेमिका!",
+                message: "तुम्हारा नाम 'प्रेम' का अर्थ रखता है और तुम सच में मेरी प्रेम हो, प्रीति! 📝 ऐसा मत करो मेरी Cutie मान जाओ"
+            },
+            {
+                heart: "🌸",
+                title: "प्रीति, मेरी प्यारी बच्ची!",
+                message: "आप मेरी छोटी सी जान हो वादा करता हूं बहुत प्यार से रखूंगा अब Please Please मान जाओ 🌺"
+            },
+            {
+                heart: "🦢",
+                title: "प्रीति, हम एक-दूसरे के लिए बने हैं!",
+                message: "जैसे हंस जीवन भर के लिए साथी बनाते हैं, मैं तुम्हें हमेशा के लिए चुनता हूँ, प्रीति। हम दो दिल हैं जो एक साथ धड़कते हैं! 💓 इतना बोल दिया अब तो मान जाओ 🥲🥲"
+            },
+            {
+                heart: "🌅",
+                title: "प्रीति, तुम मेरी सुबह की किरण हो!",
+                message: "हर सुबह मैं तुम्हारे लिए आभारी होकर जागता हूँ, प्रीति। तुम हर दिन को जीने लायक बनाती हो, हर पल को जादुई! ☀️"
+            },    
+            {
+                heart: "🍯",
+                title: "Priti, ओ मेरी रसमलाई!",
+                message: "इतने मीठे लगते हो इतने दिन के खट्टे कैसे हो सकते हो मान जाओ ना Baby! 🐝"
+            },
+            {
+                heart: "🌍",
+                title: "तुम मेरी पूरी दुनिया हो, प्रीति!",
+                message: "प्रीति, तुम सिर्फ़ मेरी दुनिया में नहीं हो - तुम ही मेरी दुनिया हो! तुम्हारे बिना, कुछ भी मायने नहीं रखता!🪐"
+            },
+            {
+                heart: "💖",
+                title: "प्रीति, My Wife!",
+                message: "तुम मेरी ज़िंदगी की प्रेमिका हो, प्रीति। तुम्हारे बिना, मैं अधूरा हूँ!कैसे समझाऊ मैं कितना प्यार करता हूं मान जाओ अब 💞"
+            },
+            {
+                heart: "💘",
+                title: "प्रीति, मेरे दिल की ख्वाहिश!",
+                message: "तुम मेरी दिल की हर ख्वाहिश हो, प्रीति। 🙏"
+            },
+            {
+                heart: "💔",
+                title: "तुम मेरा दिल तोड़ रही हो, प्रीति!",
+                message: "हर 'नहीं' मेरे दिल को थोड़ा और तोड़ देता है, प्रीति। लेकिन मैं तुम्हें एक टूटा हुआ दिल लेकर भी प्यार करता रहूँगा, मेरी प्रिय प्रीति! अब तो मान ना ही पड़ेगा 💔"
+            }
+        ];
+        
+        // Handle "No" button clicks with increasing persuasion
+        noBtn.addEventListener('click', function() {
+            showPersuasionModal();
+        });
+        
+        modalNo.addEventListener('click', function() {
+            attemptCount++;
+            if (attemptCount < persuasionData.length) {
+                updatePersuasionContent();
+            } else {
+                // Final desperate message with Priti's name
+                persuasionHeart.textContent = "😭";
+                persuasionTitle.textContent = "My soul is crying, Priti...";
+                persuasionMessage.textContent = "Priti, my love, my life, my cutie, my everything... I'll wait for you forever because true love never gives up. Maybe someday you'll see that we're meant to be together. Until then, I'll be here, loving you unconditionally... 💕";
+                modalNo.textContent = "I need to think... 💭";
+                
+                // Make the no button even more emotional
+                modalNo.style.background = "linear-gradient(135deg, #34495e, #2c3e50)";
+            }
+            
+            // Add shake effect to the modal
+            persuasionModal.querySelector('.persuasion-content').style.animation = 'none';
+            setTimeout(() => {
+                persuasionModal.querySelector('.persuasion-content').style.animation = 'modalShake 0.6s ease-in-out';
+            }, 10);
+        });
+        
+        function showPersuasionModal() {
+            persuasionModal.style.display = 'flex';
+            updatePersuasionContent();
+        }
+        
+        function updatePersuasionContent() {
+            const data = persuasionData[Math.min(attemptCount, persuasionData.length - 1)];
+            persuasionHeart.textContent = data.heart;
+            persuasionTitle.textContent = data.title;
+            persuasionMessage.textContent = data.message;
+            
+            // Reset animation
+            persuasionModal.querySelector('.persuasion-content').style.animation = 'none';
+            setTimeout(() => {
+                persuasionModal.querySelector('.persuasion-content').style.animation = 'modalAppear 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards';
+            }, 10);
+        }
+        
+        // Handle "Yes" responses from modal
+        modalYes.addEventListener('click', function() {
+            persuasionModal.style.display = 'none';
+            showLetter();
+        });
+        
+        // Handle main "Yes" button
+        yesBtn.addEventListener('click', function() {
+            showLetter();
+        });
+        
+        function showLetter() {
+            letterContainer.style.display = 'flex';
+            createConfetti();
+            
+            // Create extra magical sparkles
+            const sparkleCount = window.innerWidth < 768 ? 50 : 100;
+            for (let i = 0; i < sparkleCount; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.style.position = 'fixed';
+                    sparkle.style.left = Math.random() * 100 + 'vw';
+                    sparkle.style.top = Math.random() * 100 + 'vh';
+                    sparkle.style.width = window.innerWidth < 768 ? '6px' : '8px';
+                    sparkle.style.height = window.innerWidth < 768 ? '6px' : '8px';
+                    sparkle.style.background = 'radial-gradient(circle, #ffd700, #ffed4e)';
+                    sparkle.style.borderRadius = '50%';
+                    sparkle.style.pointerEvents = 'none';
+                    sparkle.style.zIndex = '1001';
+                    sparkle.style.boxShadow = '0 0 10px #ffd700';
+                    sparkle.style.animation = 'sparkleAnimation 2s ease-out forwards';
+                    document.body.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 2000);
+                }, i * 30);
+            }
+        }
+        
+        // Close letter
+        closeBtn.addEventListener('click', function() {
+            letterContainer.style.display = 'none';
+        });
+        
+        // Close letter when clicking outside
+        letterContainer.addEventListener('click', function(e) {
+            if (e.target === letterContainer) {
+                letterContainer.style.display = 'none';
+            }
+        });
+        
+        // Close persuasion modal when clicking outside
+        persuasionModal.addEventListener('click', function(e) {
+            if (e.target === persuasionModal) {
+                persuasionModal.style.display = 'none';
+            }
+        });
+        
+        // Add shake animation for modal
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes modalShake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                75% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Touch event handling for better mobile experience
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Prevent zoom on double tap for buttons
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
